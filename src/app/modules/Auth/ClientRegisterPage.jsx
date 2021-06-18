@@ -10,6 +10,7 @@ import CustomDropdown from "./../../components/common/CustomDropdown";
 import regions from "./../../enums/regions";
 import { useHistory } from "react-router";
 import { phoneRegex } from "./../../utils/regex";
+import checkPassword from "../../utils/checkPassword";
 
 const schema = Yup.object().shape({
    phoneNumber: Yup.string()
@@ -18,7 +19,13 @@ const schema = Yup.object().shape({
          errors.SHOULD_BE_PHONE_NUMBER(nouns["DEFAULT.PHONE_NUMBER"])
       )
       .required(errors.REQUIRED),
-   password: Yup.string().required(errors.REQUIRED),
+   password: Yup.string()
+      .test(
+         "checkPassword",
+         errors.INVALID(nouns["DEFAULT.USERNAME"]),
+         checkPassword
+      )
+      .required(errors.REQUIRED),
    name: Yup.string().required(errors.REQUIRED),
    address: Yup.string().required(errors.REQUIRED),
 });

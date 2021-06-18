@@ -11,6 +11,7 @@
    "DEFAULT.EMAIL": "ایمیل",
    "DEFAULT.GO_BACK": "بازگشت",
    "DEFAULT.LOGIN": "ورود",
+   "DEFAULT.NUMBER": "عدد",
    "DEFAULT.PASSWORD": "رمز عبور",
    "DEFAULT.PHONE_NUMBER": "شماره تلفن",
    "DEFAULT.PLACEHOLDER.EMAIL": "test.tester@gmail.com",

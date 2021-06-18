@@ -9,12 +9,19 @@ import CustomField from "./../../components/common/CustomField";
 import CustomDropdown from "./../../components/common/CustomDropdown";
 import regions from "./../../enums/regions";
 import { useHistory } from "react-router";
+import checkPassword from "../../utils/checkPassword";
 
 const schema = Yup.object().shape({
    email: Yup.string()
       .email(errors.SHOULD_BE_EMAIL(nouns["DEFAULT.EMAIL"]))
       .required(errors.REQUIRED),
-   password: Yup.string().required(errors.REQUIRED),
+   password: Yup.string()
+      .test(
+         "password",
+         errors.INVALID(nouns["DEFAULT.USERNAME"]),
+         checkPassword
+      )
+      .required(errors.REQUIRED),
    name: Yup.string().required(errors.REQUIRED),
    address: Yup.string().required(errors.REQUIRED),
 });
