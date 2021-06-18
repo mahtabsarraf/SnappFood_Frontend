@@ -1,0 +1,20 @@
+{
+   "APP.TITLE": "پرهام فود",
+   "AUTH.WELCOME": "به پرهام فود خوش آمدید.",
+   "AUTH.LOGIN_CLIENT": "ورود مشتری",
+   "AUTH.LOGIN_MANAGER": "ورود مدیر رستوران",
+   "AUTH.REGISTER_CLIENT": "ثبت ‌نام مشتری",
+   "AUTH.REGISTER_MANAGER": "ثبت نام مدیر رستوران",
+   "DEFAULT.ADDRESS_CLIENT": "آدرس کاربر",
+   "DEFAULT.ADDRESS_RESTAURANT": "آدرس رستوران",
+   "DEFAULT.CHOOSE": "انتخاب کنید",
+   "DEFAULT.EMAIL": "ایمیل",
+   "DEFAULT.GO_BACK": "بازگشت",
+   "DEFAULT.LOGIN": "ورود",
+   "DEFAULT.PASSWORD": "رمز عبور",
+   "DEFAULT.PHONE_NUMBER": "شماره تلفن",
+   "DEFAULT.PLACEHOLDER.EMAIL": "test.tester@gmail.com",
+   "DEFAULT.PLACEHOLDER.PHONE_NUMBER": "+989117709693",
+   "DEFAULT.REGION": "منطقه",
+   "DEFAULT.RESTAURANT_NAME": "نام رستوران"
+}

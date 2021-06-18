@@ -1,0 +1,9 @@
+{
+   "AUTH": "/auth",
+   "CLIENT_LOGIN": "/auth/client/login",
+   "CLIENT_MENU": "/client/menu",
+   "CLIENT_REGISTER": "/auth/client/register",
+   "DASHBOARD": "/manager/dashboard",
+   "MANAGER_LOGIN": "/auth/manager/login",
+   "MANAGER_REGISTER": "/auth/manager/register"
+}
