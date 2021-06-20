@@ -5,6 +5,7 @@ import LoadingScreen from "./../../pages/LoadingScreen";
 import ProfilePage from "./ProfilePage";
 import RestaurantMenu from "./RestaurantMenu";
 import ClientRestaurantPage from "./ClientRestaurantPage";
+import OrderInformation from "./OrderInformation";
 
 const ClientRoutes = () => {
    return (
@@ -16,6 +17,11 @@ const ClientRoutes = () => {
                exact
                component={ClientRestaurantPage}
                path={routes.RESTAURANT_OVERVIEW + "/:id"}
+            />
+            <Route
+               exact
+               component={OrderInformation}
+               path={routes.CLIENT_ORDER}
             />
             <Redirect to={routes.CLIENT_MENU} />
          </Switch>

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 
@@ -61,69 +61,80 @@ const ProfilePage = () => {
 
    return (
       <Container className="my-3 mx-auto">
-         <Formik
-            initialValues={{
-               username: "",
-               password: "",
-               phoneNumber: "",
-               address: "",
-            }}
-            innerRef={formikRef}
-            schema={schema}
-            onSubmit={onSubmit}
-         >
-            <Form className="d-flex flex-column">
-               <Row>
-                  <Col sm="6">
-                     <CustomField
-                        name="username"
-                        label={nouns["DEFAULT.USERNAME"]}
-                     />
-                  </Col>
-                  <Col sm="6">
-                     <CustomField
-                        name="phoneNumber"
-                        label={nouns["DEFAULT.PHONE_NUMBER"]}
-                        placeholder={nouns["DEFAULT.PLACEHOLDER.PHONE_NUMBER"]}
-                     />
-                  </Col>
-               </Row>
-               <Row>
-                  <Col>
-                     <CustomField
-                        as="textarea"
-                        name="address"
-                        label={nouns["DEFAULT.ADDRESS_CLIENT"]}
-                     />
-                  </Col>
-               </Row>
-               <Row>
-                  <Col>
-                     <CustomField
-                        type="password"
-                        name="password"
-                        label={nouns["DEFAULT.PASSWORD"]}
-                     />
-                  </Col>
-               </Row>
-               <Row>
-                  <Col>
-                     <CustomDropdown
-                        value={regions.find((r) => r.value === chosenRegion)}
-                        options={regions}
-                        onChange={({ value }) => setChosenRegion(value)}
-                        title={nouns["DEFAULT.REGION"]}
-                        wrapperClass="mb-4"
-                     />
-                  </Col>
-               </Row>
-               <Col>
-                  <Button block variant="primary" type="submit">
-                     {nouns["DEFAULT.LOGIN"]}
-                  </Button>
-               </Col>
-            </Form>
-         </Formik>
+         <Card bg="light" text="dark">
+            <Card.Header>
+               <Card.Title>{nouns["DEFAULT.EDIT_PROFILE"]}</Card.Title>
+            </Card.Header>
+            <Card.Body>
+               <Formik
+                  initialValues={{
+                     username: "",
+                     password: "",
+                     phoneNumber: "",
+                     address: "",
+                  }}
+                  innerRef={formikRef}
+                  schema={schema}
+                  onSubmit={onSubmit}
+               >
+                  <Form className="d-flex flex-column">
+                     <Row>
+                        <Col sm="6">
+                           <CustomField
+                              name="username"
+                              label={nouns["DEFAULT.USERNAME"]}
+                           />
+                        </Col>
+                        <Col sm="6">
+                           <CustomField
+                              name="phoneNumber"
+                              label={nouns["DEFAULT.PHONE_NUMBER"]}
+                              placeholder={
+                                 nouns["DEFAULT.PLACEHOLDER.PHONE_NUMBER"]
+                              }
+                           />
+                        </Col>
+                     </Row>
+                     <Row>
+                        <Col>
+                           <CustomField
+                              as="textarea"
+                              name="address"
+                              label={nouns["DEFAULT.ADDRESS_CLIENT"]}
+                           />
+                        </Col>
+                     </Row>
+                     <Row>
+                        <Col>
+                           <CustomField
+                              type="password"
+                              name="password"
+                              label={nouns["DEFAULT.PASSWORD"]}
+                           />
+                        </Col>
+                     </Row>
+                     <Row>
+                        <Col>
+                           <CustomDropdown
+                              value={regions.find(
+                                 (r) => r.value === chosenRegion
+                              )}
+                              options={regions}
+                              onChange={({ value }) => setChosenRegion(value)}
+                              title={nouns["DEFAULT.REGION"]}
+                              wrapperClass="mb-4"
+                           />
+                        </Col>
+                     </Row>
+                     <Col>
+                        <Button block variant="primary" type="submit">
+                           {nouns["DEFAULT.SAVE_CHANGES"]}
+                        </Button>
+                     </Col>
+                  </Form>
+               </Formik>
+            </Card.Body>
+         </Card>
       </Container>
    );
 };

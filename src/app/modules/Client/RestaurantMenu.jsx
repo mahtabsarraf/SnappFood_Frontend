@@ -62,50 +62,59 @@ const RestaurantMenu = () => {
       setRestaurantsList(tempRestaurants);
    }, []);
 
-   const handleChooseRestaurant = (id) => {
-      history.push(routes.RESTAURANT_OVERVIEW + "/" + id);
-      dispatch(chooseRestaurant(id));
+   const handleChooseRestaurant = (restaurant) => {
+      history.push(routes.RESTAURANT_OVERVIEW + "/" + restaurant.id);
+      dispatch(
+         chooseRestaurant({
+            restaurantName: restaurant.name,
+            restaurantId: restaurant.id,
+            deliveryCost: restaurant.deliveryCost,
+            deliveryTime: restaurant.deliveryTime,
+         })
+      );
    };
 
    return (
       <Container className="h-100">
-         <Row className="h-100">
-            {restaurantsList?.map((restaurant) => (
-               <Col key={restaurant.id} className="my-2 h-100" md="4" sm="6">
-                  <Card className="h-90" bg="light" text="dark">
-                     <Card.Img
-                        className="restaurant-image"
-                        src={logo}
-                        variant="top"
-                     />
-                     <Card.Body>
-                        <Card.Title>{restaurant.name}</Card.Title>
-                        <Card.Text>
-                           {nouns["DEFAULT.WORKING_HOURS"] +
-                              restaurant.workingHours}
-                        </Card.Text>
-                        <Card.Text>
-                           {nouns["DEFAULT.DELIVERY_TIME"] +
-                              restaurant.deliveryTime}
-                        </Card.Text>
+         <Card bg="light" text="dark">
+            <Row className="h-100">
+               {restaurantsList?.map((restaurant) => (
+                  <Col key={restaurant.id} className="my-2 h-100" md="4" sm="6">
+                     <Card className="h-90 m-3" bg="light" text="dark">
+                        <Card.Img
+                           className="restaurant-image"
+                           src={logo}
+                           variant="top"
+                        />
+                        <Card.Body>
+                           <Card.Title>{restaurant.name}</Card.Title>
+                           <Card.Text>
+                              {nouns["DEFAULT.WORKING_HOURS"] +
+                                 restaurant.workingHours}
+                           </Card.Text>
+                           <Card.Text>
+                              {nouns["DEFAULT.DELIVERY_TIME"] +
+                                 restaurant.deliveryTime}
+                           </Card.Text>
 
-                        <Card.Text>
-                           {nouns["DEFAULT.DELIVERY_COST"] +
-                              (restaurant.deliveryCost ||
-                                 nouns["DEFAULT.FREE"])}
-                        </Card.Text>
-                        <Button
-                           block
-                           variant="success"
-                           onClick={() => handleChooseRestaurant(restaurant.id)}
-                        >
-                           {nouns["DEFAULT.GO_TO_RESTAURANT_PAGE"]}
-                        </Button>
-                     </Card.Body>
-                  </Card>
-               </Col>
-            ))}
-         </Row>
+                           <Card.Text>
+                              {nouns["DEFAULT.DELIVERY_COST"] +
+                                 (restaurant.deliveryCost ||
+                                    nouns["DEFAULT.FREE"])}
+                           </Card.Text>
+                           <Button
+                              block
+                              variant="success"
+                              onClick={() => handleChooseRestaurant(restaurant)}
+                           >
+                              {nouns["DEFAULT.GO_TO_RESTAURANT_PAGE"]}
+                           </Button>
+                        </Card.Body>
+                     </Card>
+                  </Col>
+               ))}
+            </Row>
+         </Card>
       </Container>
    );
 };

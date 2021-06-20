@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Button, Card, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 
 import nouns from "../enums/nouns.json";
 import messages from "../enums/messages";
@@ -44,24 +46,18 @@ const ClientMenu = ({ food }) => {
             <Card.Text>
                {messages.rateFromComment(food.rate, food.totalComments)}
             </Card.Text>
-            <Row className="d-flex justify-content-center">
-               <Button
-                  variant="secondary"
-                  onClick={() => setQuantity(quantity + 1)}
-               >
-                  +
+            <Row className="d-flex justify-content-center align-items-center">
+               <Button onClick={() => setQuantity(quantity + 1)}>
+                  <FontAwesomeIcon icon={faPlus} />
                </Button>
-
                <span className="mx-2">{quantity}</span>
-
                <Button
-                  variant="secondary"
-                  disabled={quantity <= 1}
                   onClick={() => {
                      setQuantity(quantity - 1);
                   }}
+                  disabled={quantity <= 1}
                >
-                  -
+                  <FontAwesomeIcon icon={faMinus} />
                </Button>
             </Row>
             <Row>
@@ -76,6 +72,8 @@ const ClientMenu = ({ food }) => {
                            quantity,
                            id: food.id,
                            restaurantId: food.restaurantId,
+                           name: food.name,
+                           price: food.price,
                         })
                      )
                   }
