@@ -1,9 +1,15 @@
 {
    "AUTH": "/auth",
+   "CLIENT": "/client",
+   "CLIENT_FAVORITE": "/client/favorite",
    "CLIENT_LOGIN": "/auth/client/login",
+   "CLIENT_ORDER": "/client/current-order",
+   "CLIENT_PROFILE": "/client/profile",
    "CLIENT_MENU": "/client/menu",
    "CLIENT_REGISTER": "/auth/client/register",
    "DASHBOARD": "/manager/dashboard",
+   "MANAGER": "/manager",
    "MANAGER_LOGIN": "/auth/manager/login",
-   "MANAGER_REGISTER": "/auth/manager/register"
+   "MANAGER_REGISTER": "/auth/manager/register",
+   "RESTAURANT_OVERVIEW": "/client/restaurant"
 }

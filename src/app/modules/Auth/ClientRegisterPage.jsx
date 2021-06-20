@@ -22,11 +22,11 @@ const schema = Yup.object().shape({
    password: Yup.string()
       .test(
          "checkPassword",
-         errors.INVALID(nouns["DEFAULT.USERNAME"]),
+         errors.INVALID(nouns["DEFAULT.PASSWORD"]),
          checkPassword
       )
       .required(errors.REQUIRED),
-   name: Yup.string().required(errors.REQUIRED),
+   username: Yup.string().required(errors.REQUIRED),
    address: Yup.string().required(errors.REQUIRED),
 });
 
@@ -72,9 +72,11 @@ const ClientRegisterPage = () => {
                               label={nouns["DEFAULT.ADDRESS_CLIENT"]}
                            />
                            <CustomField
-                              name="email"
-                              label={nouns["DEFAULT.EMAIL"]}
-                              placeholder={nouns["DEFAULT.PLACEHOLDER.EMAIL"]}
+                              name="phoneNumber"
+                              label={nouns["DEFAULT.PHONE_NUMBER"]}
+                              placeholder={
+                                 nouns["DEFAULT.PLACEHOLDER.PHONE_NUMBER"]
+                              }
                            />
                            <CustomField
                               type="password"

@@ -4,8 +4,10 @@ import { useSelector } from "react-redux";
 import routes from "./routes.json";
 import { getAuthenticated, getType } from "../redux/slices/auth";
 import LoadingScreen from "../pages/LoadingScreen";
+import ClientLayout from "../components/ClientLayout";
 
 const AuthRoutes = lazy(() => import("../modules/Auth/AuthRoutes"));
+const ClientRoutes = lazy(() => import("../modules/Client/ClientRoutes"));
 
 const Routes = withRouter(({ history }) => {
    const authenticated = useSelector(getAuthenticated);
@@ -26,13 +28,15 @@ const Routes = withRouter(({ history }) => {
                {/* <Route path={routes.NOT_FOUND} component={Error404} />
                <Route path={routes.SERVER_ERROR} component={Error500} /> */}
                <Route path={routes.AUTH} component={AuthRoutes} />
-               {/* <Route path="/">
-                  <Layout path={history.location.pathname}>
-                     <BasePage
-                        history={history}
-                        authenticated={authenticated}
-                     />
-                  </Layout>
+               <Route path={routes.CLIENT}>
+                  <ClientLayout path={history.location.pathname}>
+                     <ClientRoutes />
+                  </ClientLayout>
+               </Route>
+               {/* <Route path={routes.MANAGER}>
+                  <ManagerLayout path={history.location.pathname}>
+
+                  </ManagerLayout>
                </Route> */}
             </Switch>
          </Suspense>
