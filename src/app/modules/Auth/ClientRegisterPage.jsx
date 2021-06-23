@@ -11,6 +11,7 @@ import regions from "./../../enums/regions";
 import { useHistory } from "react-router";
 import { phoneRegex } from "./../../utils/regex";
 import checkPassword from "../../utils/checkPassword";
+import routes from "../../router/routes.json";
 
 const schema = Yup.object().shape({
    phoneNumber: Yup.string()
@@ -45,6 +46,7 @@ const ClientRegisterPage = () => {
       onSubmit: async (values) => {
          console.log(values);
          console.log(chosenRegion);
+         history.push(routes.CLIENT_PROFILE);
       },
    });
 
@@ -91,7 +93,7 @@ const ClientRegisterPage = () => {
                            />
                            <Col>
                               <Button block variant="primary" type="submit">
-                                 {nouns["DEFAULT.LOGIN"]}
+                                 {nouns["DEFAULT.REGISTER"]}
                               </Button>
                            </Col>
                         </Form>

@@ -8,6 +8,7 @@ import errors from "./../../enums/errors";
 import nouns from "../../enums/nouns.json";
 import { phoneRegex } from "./../../utils/regex";
 import CustomField from "./../../components/common/CustomField";
+import routes from "../../router/routes.json";
 
 const schema = Yup.object().shape({
    phoneNumber: Yup.string()
@@ -30,6 +31,7 @@ const ClientLoginPage = () => {
       validationSchema: schema,
       onSubmit: async (values) => {
          console.log(values);
+         history.push(routes.CLIENT_PROFILE)
       },
    });
 

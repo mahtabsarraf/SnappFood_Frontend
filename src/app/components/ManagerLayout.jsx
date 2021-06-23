@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 import nouns from "../enums/nouns.json";
 import routes from "../router/routes.json";
 
-const ClientLayout = ({ children }) => {
+const ManagerLayout = ({ children }) => {
    const location = useLocation();
 
    return (
@@ -15,33 +15,33 @@ const ClientLayout = ({ children }) => {
             bg="light"
             expand="lg"
          >
-            <Navbar.Brand className="ml-4" href={routes.CLIENT}>
+            <Navbar.Brand className="ml-4" href={routes.MANAGER}>
                {nouns["APP.TITLE"]}
             </Navbar.Brand>
             <Nav>
                <Nav.Link
-                  href={routes.CLIENT_PROFILE}
-                  active={location.pathname === routes.CLIENT_PROFILE}
+                  href={routes.MANAGER_PROFILE}
+                  active={location.pathname === routes.MANAGER_PROFILE}
                >
                   {nouns["DEFAULT.PROFILE"]}
                </Nav.Link>
                <Nav.Link
-                  href={routes.CLIENT_MENU}
-                  active={location.pathname === routes.CLIENT_MENU}
+                  href={routes.MANAGER_MENU}
+                  active={location.pathname === routes.MANAGER_MENU}
                >
                   {nouns["DEFAULT.MENU"]}
                </Nav.Link>
                <Nav.Link
-                  href={routes.CLIENT_ORDER}
-                  active={location.pathname === routes.CLIENT_ORDER}
+                  href={routes.MANAGER_ORDERS}
+                  active={location.pathname === routes.MANAGER_ORDERS}
                >
-                  {nouns["DEFAULT.ORDER"]}
+                  {nouns["DEFAULT.ORDERS"]}
                </Nav.Link>
                <Nav.Link
-                  href={routes.CLIENT_FAVORITE}
-                  active={location.pathname === routes.CLIENT_FAVORITE}
+                  href={routes.MANAGER_COMMENTS}
+                  active={location.pathname === routes.MANAGER_COMMENTS}
                >
-                  {nouns["DEFAULT.FAVORITE_FOOD"]}
+                  {nouns["DEFAULT.COMMENTS"]}
                </Nav.Link>
                <Nav.Link href={routes.AUTH} className="text-danger">
                   {nouns["DEFAULT.LOGOUT"]}
@@ -53,4 +53,4 @@ const ClientLayout = ({ children }) => {
    );
 };
 
-export default ClientLayout;
+export default ManagerLayout;

@@ -2,30 +2,27 @@ import React, { useEffect, useRef, useState } from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
+
 import CustomField from "./../../components/common/CustomField";
 import nouns from "../../enums/nouns.json";
 import CustomDropdown from "./../../components/common/CustomDropdown";
 import regions from "./../../enums/regions";
-import { phoneRegex } from "./../../utils/regex";
 import errors from "./../../enums/errors";
 import checkPassword from "./../../utils/checkPassword";
-import MapComponent from "../../components/common/MapComponent";
 
 const tempData = {
    username: "kian jalilian",
-   password: "123456",
-   phoneNumber: "09117709693",
-   address: "somewhere somewhere somewhere",
+   password: "12345678",
+   email: "kian.jalilian@gmail.com",
+   restaurantName: "آویشن",
+   address: "تهران، بلوار دانشجو ...",
    region: 3,
+   workingHours: "8:00 تا 16:00",
+   deliveryCost: 10000,
+   deliveryTime: 20
 };
 
 const schema = Yup.object().shape({
-   phoneNumber: Yup.string()
-      .matches(
-         phoneRegex,
-         errors.SHOULD_BE_PHONE_NUMBER(nouns["DEFAULT.PHONE_NUMBER"])
-      )
-      .required(errors.REQUIRED),
    password: Yup.string()
       .test(
          "checkPassword",
@@ -34,18 +31,23 @@ const schema = Yup.object().shape({
       )
       .required(errors.REQUIRED),
    username: Yup.string().required(errors.REQUIRED),
+   email: Yup.string().email(errors.SHOULD_BE_EMAIL(nouns["DEFAULT.EMAIL"])),
+   restaurantName: Yup.string().required(errors.REQUIRED),
+   workingHours: Yup.string().required(errors.REQUIRED),
+   deliveryCost: Yup.number().typeError(errors.SHOULD_BE_NUMBER(nouns["DEFAULT.DELIVERY_COST"])).required(errors.REQUIRED),
+   deliveryTime: Yup.number().typeError(errors.SHOULD_BE_NUMBER(nouns["DEFAULT.DELIVERY_TIME"])).required(errors.REQUIRED),
    address: Yup.string().required(errors.REQUIRED),
 });
 
-const ProfilePage = () => {
+const ManagerProfile = () => {
    const [inputValues, setInputValues] = useState();
    const [chosenRegion, setChosenRegion] = useState();
 
    const formikRef = useRef();
 
    useEffect(() => {
-      setInputValues(tempData);
-      setChosenRegion(tempData.region);
+         setInputValues(tempData);
+         setChosenRegion(tempData.region);
    }, []);
 
    useEffect(() => {
@@ -68,7 +70,11 @@ const ProfilePage = () => {
                   initialValues={{
                      username: "",
                      password: "",
-                     phoneNumber: "",
+                     email: "",
+                     restaurantName: "",
+                     workingHours: "",
+                     deliveryCost: 0,
+                     deliveryTime: 0,
                      address: "",
                   }}
                   innerRef={formikRef}
@@ -85,10 +91,10 @@ const ProfilePage = () => {
                         </Col>
                         <Col sm="6">
                            <CustomField
-                              name="phoneNumber"
-                              label={nouns["DEFAULT.PHONE_NUMBER"]}
+                              name="email"
+                              label={nouns["DEFAULT.EMAIL"]}
                               placeholder={
-                                 nouns["DEFAULT.PLACEHOLDER.PHONE_NUMBER"]
+                                 nouns["DEFAULT.PLACEHOLDER.EMAIL"]
                               }
                            />
                         </Col>
@@ -98,7 +104,7 @@ const ProfilePage = () => {
                            <CustomField
                               as="textarea"
                               name="address"
-                              label={nouns["DEFAULT.ADDRESS_CLIENT"]}
+                              label={nouns["DEFAULT.ADDRESS_RESTAURANT"]}
                            />
                         </Col>
                      </Row>
@@ -124,14 +130,33 @@ const ProfilePage = () => {
                            />
                         </Col>
                      </Row>
-                     <Row className="m-4 d-flex justify-content-center">
-                        <iframe
-                           src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3235.729015130011!2d51.39110669835887!3d35.80658537785358!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2snl!4v1624453321992!5m2!1sen!2snl"
-                           width="600"
-                           height="450"
-                           allowfullscreen=""
-                           loading="lazy"
-                        ></iframe>
+                     <Row>
+                        <Col>
+                           <CustomField
+                              name="restaurantName"
+                              label={nouns["DEFAULT.RESTAURANT_NAME"]}
+                           />
+                        </Col>
+                        <Col>
+                           <CustomField
+                              name="workingHours"
+                              label={nouns["DEFAULT.WORKING_HOURS"]}
+                           />
+                        </Col>
+                     </Row>
+                     <Row>
+                        <Col>
+                           <CustomField
+                              name="deliveryCost"
+                              label={nouns["DEFAULT.DELIVERY_COST"]}
+                           />
+                        </Col>
+                        <Col>
+                           <CustomField
+                              name="deliveryTime"
+                              label={nouns["DEFAULT.DELIVERY_TIME"]}
+                           />
+                        </Col>
                      </Row>
                      <Col>
                         <Button block variant="primary" type="submit">
@@ -146,4 +171,4 @@ const ProfilePage = () => {
    );
 };
 
-export default ProfilePage;
+export default ManagerProfile;

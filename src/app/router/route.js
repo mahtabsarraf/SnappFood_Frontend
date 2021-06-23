@@ -5,9 +5,11 @@ import routes from "./routes.json";
 import { getAuthenticated, getType } from "../redux/slices/auth";
 import LoadingScreen from "../pages/LoadingScreen";
 import ClientLayout from "../components/ClientLayout";
+import ManagerLayout from './../components/ManagerLayout';
 
 const AuthRoutes = lazy(() => import("../modules/Auth/AuthRoutes"));
 const ClientRoutes = lazy(() => import("../modules/Client/ClientRoutes"));
+const ManagerRoutes = lazy(() => import("../modules/Manager/ManagerRoutes"));
 
 const Routes = withRouter(({ history }) => {
    const authenticated = useSelector(getAuthenticated);
@@ -15,8 +17,8 @@ const Routes = withRouter(({ history }) => {
 
    const getInitialRoute = () => {
       if (authenticated) {
-         if (type === "manager") return routes.DASHBOARD;
-         else return routes.CLIENT_MENU;
+         if (type === "manager") return routes.MANAGER_PROFILE;
+         else return routes.CLIENT_PROFILE;
       } else return routes.AUTH;
    };
 
@@ -25,19 +27,17 @@ const Routes = withRouter(({ history }) => {
          <Suspense fallback={<LoadingScreen />}>
             <Switch>
                <Redirect exact from="/" to={getInitialRoute()} />
-               {/* <Route path={routes.NOT_FOUND} component={Error404} />
-               <Route path={routes.SERVER_ERROR} component={Error500} /> */}
                <Route path={routes.AUTH} component={AuthRoutes} />
                <Route path={routes.CLIENT}>
                   <ClientLayout path={history.location.pathname}>
                      <ClientRoutes />
                   </ClientLayout>
                </Route>
-               {/* <Route path={routes.MANAGER}>
+               <Route path={routes.MANAGER}>
                   <ManagerLayout path={history.location.pathname}>
-
+                     <ManagerRoutes />
                   </ManagerLayout>
-               </Route> */}
+               </Route>
             </Switch>
          </Suspense>
       </Router>

@@ -7,9 +7,12 @@ import { useHistory } from "react-router";
 import errors from "./../../enums/errors";
 import nouns from "../../enums/nouns.json";
 import CustomField from "./../../components/common/CustomField";
+import routes from "../../router/routes.json";
 
 const schema = Yup.object().shape({
-   email: Yup.string().email(errors.SHOULD_BE_EMAIL).required(errors.REQUIRED),
+   email: Yup.string()
+      .email(errors.SHOULD_BE_EMAIL(nouns["DEFAULT.EMAIL"]))
+      .required(errors.REQUIRED),
    password: Yup.string().required(errors.REQUIRED),
 });
 
@@ -23,6 +26,7 @@ const ManagerLoginPage = () => {
       validationSchema: schema,
       onSubmit: async (values) => {
          console.log(values);
+         history.push(routes.MANAGER_PROFILE);
       },
    });
 

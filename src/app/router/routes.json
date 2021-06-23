@@ -9,7 +9,11 @@
    "CLIENT_REGISTER": "/auth/client/register",
    "DASHBOARD": "/manager/dashboard",
    "MANAGER": "/manager",
+   "MANAGER_COMMENTS": "/manager/comments",
    "MANAGER_LOGIN": "/auth/manager/login",
+   "MANAGER_PROFILE": "/manager/profile",
+   "MANAGER_MENU": "/manager/menu",
+   "MANAGER_ORDERS": "/manager/orders",
    "MANAGER_REGISTER": "/auth/manager/register",
    "RESTAURANT_OVERVIEW": "/client/restaurant"
 }

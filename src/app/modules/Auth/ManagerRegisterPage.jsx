@@ -10,6 +10,7 @@ import CustomDropdown from "./../../components/common/CustomDropdown";
 import regions from "./../../enums/regions";
 import { useHistory } from "react-router";
 import checkPassword from "../../utils/checkPassword";
+import routes from "../../router/routes.json";
 
 const schema = Yup.object().shape({
    email: Yup.string()
@@ -41,6 +42,7 @@ const ManagerRegisterPage = () => {
       onSubmit: async (values) => {
          console.log(values);
          console.log(chosenRegion);
+         history.push(routes.MANAGER_PROFILE);
       },
    });
 
