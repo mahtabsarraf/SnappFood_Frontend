@@ -8,4 +8,10 @@
 - [X] Restaurant page
 - [X] Order page
 - [X] Finish
+## Contributors
+-  [Kian Jalilian](https://github.com/kianjalilian)
+-  [Ehsan Sajadi](https://github.com/ehsansajadi)
+-  [Kamyab abedi](https://github.com/Kamyababedi)
+## License
+MIT License, Copyright (c) 2021 Kian Jalilian (and the gang!)
 
