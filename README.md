@@ -1,5 +1,5 @@
 # SnappFood_Frontend
-• A Food Delivery application built with React JS.<br/>
+• A Food Delivery application that was bootstrapped with Create React App, using the Redux and Redux Toolkit template.<br/>
 • Project of Internet Engineering Course, Dr. Parham Alvani, Shahid Beheshti University.
 # Todo
 - [X] Add Kian & Ehsan to the project
